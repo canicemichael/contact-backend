@@ -7,6 +7,12 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json())
 
+app.get("/home", (req, res) => {
+    res.send("homes");
+})
+
+app.use("/api/contacts", require("./routes/contactRoutes"))
+
 app.listen(port, () => {
     console.log(`Server starteed running on port ${port}`);
 })
