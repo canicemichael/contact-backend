@@ -14,7 +14,7 @@ const validateToken = require("../middleware/validateTokenHandler");
 
 // now we will use a validateToken fun here but we will use it once
 // since we want to validate all the routes
-router.route(validateToken);
+router.use(validateToken);
 
 router.route("/").get(getContacts).post(createContact)
 

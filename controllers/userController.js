@@ -66,7 +66,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
   //   compare password with hashedpassword
   if (user && (await bcrypt.compare(password, user.password))) {
-    const accessToken = await jwt.sign(
+    const accessToken = jwt.sign(
       {
         user: {
           username: user.username,
@@ -75,7 +75,7 @@ const loginUser = asyncHandler(async (req, res) => {
         },
       },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "1m" }
+      { expiresIn: "15m" }
     );
     res.status(200).json({ accessToken });
   } else {
