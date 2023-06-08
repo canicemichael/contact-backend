@@ -91,7 +91,7 @@ const deleteContact = asyncHandler(async (req, res) => {
   // the current user who is deleting it
   if (contact.user_id.toString() !== req.user.id) {
     res.status(403);
-    throw new Error("User don't have permission to update other user contacts");
+    throw new Error("User don't have permission to delete other user contacts");
   }
 
   const deletedContact = await Contact.findByIdAndDelete(req.params.id);
