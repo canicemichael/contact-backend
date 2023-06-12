@@ -15,6 +15,13 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 //@desc Register a user
+//@route GET /api/users/register
+//@access public
+const registerPage = (req, res) => {
+  res.render("signup");
+}
+
+//@desc Register a user
 //@route POST /api/users/register
 //@access public
 const registerUser = asyncHandler(async (req, res) => {
@@ -51,6 +58,13 @@ const registerUser = asyncHandler(async (req, res) => {
 
 // When creating a login route, you will need the user payload,
 // an access-token-secret and expiration date of the token
+
+//@desc Login user
+//@route GET /api/users/login
+//@access public
+const loginPage = (req, res) => {
+  res.render("login");
+}
 
 //@desc Login user
 //@route POST /api/users/login
@@ -91,4 +105,4 @@ const currentUser = asyncHandler(async (req, res) => {
   res.json(req.user);
 });
 
-module.exports = { registerUser, loginUser, currentUser };
+module.exports = { registerUser, loginUser, currentUser, loginPage, registerPage };
